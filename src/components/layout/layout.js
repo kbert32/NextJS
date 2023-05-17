@@ -4,12 +4,20 @@ import Notification from "../ui/notification";
 import NotificationContext from "@/store/notification-context";
 
 export default function Layout(props) {
-  useContext();
+  const notCtx = useContext(NotificationContext);
+
+  const activeNotification = notCtx.notification;
   return (
     <>
       <MainHeader />
       <main>{props.children}</main>
-      <Notification title="Test" message="This is a test." status="pending" />
+      {activeNotification && (
+        <Notification
+          title={activeNotification.title}
+          message={activeNotification.message}
+          status={activeNotification.status}
+        />
+      )}
     </>
   );
 }
