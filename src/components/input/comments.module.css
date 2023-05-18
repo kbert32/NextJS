@@ -28,7 +28,7 @@
 }
 
 .comments button:active {
-  scale: 93%;
+  scale: 97%;
   box-shadow: none;
   background-image: linear-gradient(to bottom left, #00ffdd, #0b4f64);
   color: #7deedf;
