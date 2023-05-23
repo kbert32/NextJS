@@ -2,12 +2,12 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const postsDirectory = path.join(process.cwd(), "posts");
+const postsDirectory = path.join(process.cwd(), "content/posts");
 
 function getPostData(fileName) {
   const filePath = path.join(postsDirectory, fileName);
   fs.readFileSync(filePath, "utf-8");
-  const { data, content } = matter(fileContent);
+  const { data, content } = matter(fileContent); //'matter', (gray-matter), returns an object with two properties, 'data' contains the metadata as a javascript object, and the 'content' property contains the markdown text as a string
 
   const postSlug = fileName.replace(/\.md$/, ""); //removes the file extension
 
@@ -41,3 +41,8 @@ export function getFeaturedPosts() {
 
   return featuredPosts;
 }
+
+//installed:
+
+//npm install react-markdown  - converts markdown to JSX
+//npm install gray-matter - allows us to read a markdown file and split it into metadata and the actual markdown content.
