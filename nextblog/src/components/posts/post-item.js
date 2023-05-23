@@ -22,8 +22,8 @@ export default function PostItem(props) {
             src={imagePath}
             alt={title}
             width={410}
-            height={200}
-            // style={{ objectFit: "contain" }}
+            height={288}
+            quality={100} //not using 'layout' prop since it has been deprecated
           />
         </div>
         <div className={classes.content}>

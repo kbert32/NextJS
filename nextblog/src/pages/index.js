@@ -4,7 +4,7 @@ export default function Home() {
   const DUMMY_POSTS = [
     {
       slug: "getting-started-with-nextjs",
-      title: "Getting Started with NetJS",
+      title: "Getting Started with NextJS",
       image: "getting-started-nextjs.png",
       excerpt:
         "NextJS is the React framework for production - it makes building fullstack React apps and sites a breeze and ships with built-in SSR.",
@@ -12,7 +12,7 @@ export default function Home() {
     },
     {
       slug: "getting-started-with-nextjs2",
-      title: "Getting Started with NetJS",
+      title: "Getting Started with NextJS",
       image: "getting-started-nextjs.png",
       excerpt:
         "NextJS is the React framework for production - it makes building fullstack React apps and sites a breeze and ships with built-in SSR.",
@@ -20,7 +20,7 @@ export default function Home() {
     },
     {
       slug: "getting-started-with-nextjs3",
-      title: "Getting Started with NetJS",
+      title: "Getting Started with NextJS",
       image: "getting-started-nextjs.png",
       excerpt:
         "NextJS is the React framework for production - it makes building fullstack React apps and sites a breeze and ships with built-in SSR.",
@@ -28,7 +28,7 @@ export default function Home() {
     },
     {
       slug: "getting-started-with-nextjs4",
-      title: "Getting Started with NetJS",
+      title: "Getting Started with NextJS",
       image: "getting-started-nextjs.png",
       excerpt:
         "NextJS is the React framework for production - it makes building fullstack React apps and sites a breeze and ships with built-in SSR.",
@@ -43,6 +43,11 @@ export default function Home() {
     </>
   );
 }
+
+//installed:
+
+//npm install react-markdown  - converts markdown to JSX
+//npm install gray-matter - allows us to read a markdown file and split it into metadata and the actual markdown content.
 
 //To render:
 
