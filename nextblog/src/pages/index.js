@@ -1,58 +1,38 @@
 import Hero from "@/components/home-page/hero";
 import FeaturedPosts from "@/components/home-page/featured-posts";
-export default function Home() {
-  const DUMMY_POSTS = [
-    {
-      slug: "getting-started-with-nextjs",
-      title: "Getting Started with NextJS",
-      image: "getting-started-nextjs.png",
-      excerpt:
-        "NextJS is the React framework for production - it makes building fullstack React apps and sites a breeze and ships with built-in SSR.",
-      date: "2022-02-10",
-    },
-    {
-      slug: "getting-started-with-nextjs2",
-      title: "Getting Started with NextJS",
-      image: "getting-started-nextjs.png",
-      excerpt:
-        "NextJS is the React framework for production - it makes building fullstack React apps and sites a breeze and ships with built-in SSR.",
-      date: "2022-02-10",
-    },
-    {
-      slug: "getting-started-with-nextjs3",
-      title: "Getting Started with NextJS",
-      image: "getting-started-nextjs.png",
-      excerpt:
-        "NextJS is the React framework for production - it makes building fullstack React apps and sites a breeze and ships with built-in SSR.",
-      date: "2022-02-10",
-    },
-    {
-      slug: "getting-started-with-nextjs4",
-      title: "Getting Started with NextJS",
-      image: "getting-started-nextjs.png",
-      excerpt:
-        "NextJS is the React framework for production - it makes building fullstack React apps and sites a breeze and ships with built-in SSR.",
-      date: "2022-02-10",
-    },
-  ];
+import { getFeaturedPosts } from "../../lib/posts-util";
 
+export default function Home(props) {
   return (
     <>
       <Hero />
-      <FeaturedPosts posts={DUMMY_POSTS} />
+      <FeaturedPosts posts={props.posts} />
     </>
   );
+}
+
+export function getStaticProps() {
+  const featuredPosts = getFeaturedPosts();
+
+  return {
+    props: {
+      posts: featuredPosts,
+    },
+  };
 }
 
 //installed:
 
 //npm install react-markdown  - converts markdown to JSX
 //npm install gray-matter - allows us to read a markdown file and split it into metadata and the actual markdown content.
+//npm install react-syntax-highlighter  - this package makes highlighting code in a pleasant way simple - for displaying the code snippets
 
 //To render:
 
 //1) Hero => Present ourselves
 //2) Featured Posts
+
+//To add metadat:
 
 // import Head from "next/head";
 // <Head>

@@ -2,14 +2,21 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const postsDirectory = path.join(process.cwd(), "content/posts");
+const postsDirectory = path.join(process.cwd(), "content", "posts");
 
-function getPostData(fileName) {
-  const filePath = path.join(postsDirectory, fileName);
-  fs.readFileSync(filePath, "utf-8");
+export function getPostsFiles() {
+  return fs.readdirSync(postsDirectory); //readdirSync reads all the contents synchronously, returns an array of file names
+}
+
+export function dropFileExtension(fileName) {
+  return fileName.replace(/\.md$/, ""); //removes the file extension
+}
+
+export function getPostData(postIdentifier) {
+  const postSlug = dropFileExtension(postIdentifier);
+  const filePath = path.join(postsDirectory, `${postSlug}.md`);
+  const fileContent = fs.readFileSync(filePath, "utf-8"); //'fileContent' will be a string
   const { data, content } = matter(fileContent); //'matter', (gray-matter), returns an object with two properties, 'data' contains the metadata as a javascript object, and the 'content' property contains the markdown text as a string
-
-  const postSlug = fileName.replace(/\.md$/, ""); //removes the file extension
 
   const postData = {
     slug: postSlug,
@@ -21,7 +28,7 @@ function getPostData(fileName) {
 }
 
 export function getAllPosts() {
-  const postFiles = fs.readdirSync(postsDirectory); //readdirSync reads all the contents synchronously
+  const postFiles = getPostsFiles();
 
   const allPosts = postFiles.map((postFile) => {
     return getPostData(postFile);
