@@ -13,7 +13,7 @@ export default function Hero() {
           height={300}
         />
       </div>
-      <h1>Hi, I'm Max</h1>
+      <h1>Hi, I&apos;m Max</h1>
       <p>blog blog blog</p>
     </section>
   );

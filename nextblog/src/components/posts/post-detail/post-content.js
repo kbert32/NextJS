@@ -46,7 +46,11 @@ export default function PostContent(props) {
       const { className, children } = code;
       const language = className.split("-")[1]; //ReactMarkdown does not return a value that react-syntax-highlighter can directly use?
 
-      return <Prism style={atomDark} language={language} children={children} />;
+      return (
+        <Prism style={atomDark} language={language}>
+          {children}
+        </Prism>
+      );
     },
   };
 
