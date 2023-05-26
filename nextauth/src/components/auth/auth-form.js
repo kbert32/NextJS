@@ -1,5 +1,7 @@
 import { useRef, useState } from "react";
+import { useRouter } from "next/router";
 import classes from "./auth-form.module.css";
+import { signIn } from "next-auth/react";
 
 async function createUser(email, password) {
   const response = await fetch("/api/auth/signup", {
@@ -25,6 +27,8 @@ function AuthForm() {
 
   const [isLogin, setIsLogin] = useState(true);
 
+  const router = useRouter();
+
   function switchAuthModeHandler() {
     setIsLogin((prevState) => !prevState);
   }
@@ -38,7 +42,15 @@ function AuthForm() {
     //Add validation
 
     if (isLogin) {
-      //log user in
+      const result = await signIn("credentials", {
+        redirect: false, //when redirect is set to false, 'signIn' will return a promise that will always resolve and return results, even if there is an error in our backend, it will return the error
+        email: enteredEmail,
+        password: enteredPassword,
+      });
+
+      if (!result.error) {
+        router.replace("/profile");
+      }
     } else {
       try {
         const result = await createUser(enteredEmail, enteredPassword);

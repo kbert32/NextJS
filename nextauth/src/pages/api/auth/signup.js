@@ -19,11 +19,19 @@ export default async function handler(req, res) {
       });
     }
 
-    const hashedPassword = await hashPassword(password);
+    const hashedPassword = await hashPassword(password); //'hashPassword' returns a promise
 
     const client = await connectToDatabase();
 
     const db = client.db();
+
+    const existingUser = await db.collection("users").findOne({ email: email });
+
+    if (existingUser) {
+      res.status(422).json({ message: "User exists already." });
+      client.close();
+      return;
+    }
 
     const result = await db.collection("users").insertOne({
       email: email,
@@ -31,5 +39,6 @@ export default async function handler(req, res) {
     });
 
     res.status(201).json({ message: "Created user." });
+    client.close();
   }
 }
