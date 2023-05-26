@@ -24,5 +24,3 @@ function UserProfile() {
 }
 
 export default UserProfile;
-
-//$2a$12$8emkX5hsHaVZVYMEzRpCYuT4QsQkfSK0VZSTR7l55vadffnzXD6T2
