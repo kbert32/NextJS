@@ -1,6 +1,5 @@
-// import { authOptions } from "./api/auth/[...nextauth]";
-// import { getServerSession } from "next-auth/next";
-import { getSession } from "next-auth/react";
+import { authOptions } from "./api/auth/[...nextauth]";
+import { getServerSession } from "next-auth/next";
 
 import UserProfile from "../components/profile/user-profile";
 
@@ -9,10 +8,10 @@ export default function ProfilePage() {
 }
 
 export async function getServerSideProps(context) {
-  // const session = await getServerSession(context.req, context.res, authOptions); //'getServerSession' is recommended over 'getSession'
   //getServerSideProps and getServerSession are used here to redirect if not authorized to visit this page
-  const session = await getSession({ req: context.req });
 
+  const session = await getServerSession(context.req, context.res, authOptions); //'getServerSession' is recommended over 'getSession' for backend
+  console.log(session);
   if (!session) {
     return {
       redirect: {
@@ -23,6 +22,8 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: { session },
+    props: {
+      session: session.user.email,
+    },
   };
 }
