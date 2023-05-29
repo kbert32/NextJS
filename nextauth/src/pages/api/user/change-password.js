@@ -35,7 +35,7 @@ export default async function handler(req, res) {
 
   const currentPassword = user.password;
 
-  const passwordsAreEqual = verifyPassword(oldPassword, currentPassword);
+  const passwordsAreEqual = await verifyPassword(oldPassword, currentPassword);
 
   if (!passwordsAreEqual) {
     res.status(403).json({ message: "Invalid password." });
