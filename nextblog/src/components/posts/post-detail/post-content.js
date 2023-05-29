@@ -9,7 +9,7 @@ import jsx from "react-syntax-highlighter/dist/cjs/languages/prism/jsx";
 import PostHeader from "./post-header";
 import classes from "./post-content.module.css";
 
-PrismLight.registerLanguage("css", css);
+PrismLight.registerLanguage("css", css); //registering only the languages we need, keeps the import file size lighter
 PrismLight.registerLanguage("js", js);
 PrismLight.registerLanguage("jsx", jsx);
 
