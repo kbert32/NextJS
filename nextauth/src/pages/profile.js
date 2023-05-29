@@ -11,7 +11,7 @@ export async function getServerSideProps(context) {
   //getServerSideProps and getServerSession are used here to redirect if not authorized to visit this page
 
   const session = await getServerSession(context.req, context.res, authOptions); //'getServerSession' is recommended over 'getSession' for backend
-  console.log(session);
+
   if (!session) {
     return {
       redirect: {
@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: {
-      session: session.user.email,
+      session: "authenticated",
     },
   };
 }
