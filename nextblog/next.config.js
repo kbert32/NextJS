@@ -5,10 +5,10 @@ const development_nextConfig = {
   //environment variables for development
   reactStrictMode: true,
   env: {
-    mongodb_username: "new",
-    mongodb_password: "3YuucnfFdonyoJJy",
-    mongodb_clustername: "cluster0",
-    mongodb_database: "Blog",
+    mongodb_username: "",
+    mongodb_password: "",
+    mongodb_clustername: "",
+    mongodb_database: "",
   },
 };
 
@@ -16,10 +16,10 @@ const production_nextConfig = {
   //environment variables for production
   reactStrictMode: true,
   env: {
-    mongodb_username: "new",
-    mongodb_password: "3YuucnfFdonyoJJy",
-    mongodb_clustername: "cluster0",
-    mongodb_database: "Blog",
+    mongodb_username: "",
+    mongodb_password: "",
+    mongodb_clustername: "",
+    mongodb_database: "",
   },
 };
 
